@@ -18,4 +18,12 @@ router.post("/addData", (req, res) => {
     }
   );
 });
+router.get("/getData", (req, res) => {
+  fs.readFile(`${dataFilePath}/studentsData.json`, (err, data) => {
+    const readDataJson = JSON.parse(data);
+    err
+      ? console.log("you Got the error mission failed", err)
+      : res.send(readDataJson);
+  });
+});
 module.exports = router;
